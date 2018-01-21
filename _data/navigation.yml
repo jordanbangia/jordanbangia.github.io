@@ -5,6 +5,4 @@ main:
   - title: "Blog"
     url: "https://medium.com/@jordan.bangia"
   - title: "Projects"
-    url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+    url: /projects/
