@@ -84,7 +84,7 @@ analytics:
 # Site Author
 author:
   name             : "Jordan Bangia"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.png"
   bio              : "Software Dev.  Gamer.  Culinary Adventurer.  Esports Enthusiast."
   location         : "Toronto"
   email            : jordan.bangia@gmail.com
