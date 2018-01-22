@@ -1,12 +1,12 @@
 ---
-layout: splash
+layout: single
 title:
 tags: [about]
 modified: 2014-08-08T20:53:07.573882-04:00
 author_profile: true
 permalink: /about/
 header:
-  overlay_image: /assets/images/features/back_1.png
+  image: /assets/images/features/back_1.png
 ---
 
 I'm a graduate of the University of Toronto, class of 2015.  In my free time, I like to use software to solve everyday problems and build tools to make life a little easier.  I have experience in mobile development (mostly in Android), Big Data technologies (Hadoop, MapReduce, Storm), and some learning web technologies (Django).  I'm using Python, Java, Go, Ruby, and C# for development.
