@@ -1,10 +1,10 @@
 ---
 layout: single
 title:
-tags: [about]
+tags: 
 modified: 2014-08-08T20:53:07.573882-04:00
 author_profile: true
-permalink: /about/
+permalink: /
 header:
   image: /assets/images/features/back_1.png
 ---
