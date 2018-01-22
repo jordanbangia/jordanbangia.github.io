@@ -8,10 +8,10 @@ permalink: /
 header:
   image: /assets/images/features/back_12.png
 ---
-
+### About
 I'm a graduate of the University of Toronto, class of 2015.  In my free time, I like to use software to solve everyday problems and build tools to make life a little easier.  I have experience in mobile development (mostly in Android), Big Data technologies (Hadoop, MapReduce, Storm), and some learning web technologies (Django).  I'm using Python, Java, Go, Ruby, and C# for development.
 
-## Gaming
+### Gaming
 When I'm not doing software/tech related things, I love to play video games.  I'm an avid esports watcher and follow competitive Smite, League of Legends, Hearthstone and Overwatch (repping Cloud 9).  
 
 Currently, I'm playing mostly Overwatch and League of Legends.  I enjoy the competitive team aspect of the games and the different strategies that can be used to win.
