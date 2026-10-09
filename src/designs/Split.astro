@@ -122,22 +122,8 @@ import Experience from '../components/Experience.astro';
       radial-gradient(110% 80% at 100% 100%, var(--side2), transparent 70%),
       var(--bg);
     border-right: 1px solid var(--line);
-    overflow: hidden;
   }
 
-  aside::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.35;
-    background-image: repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 28px);
-  }
-
-  aside > * {
-    position: relative;
-    z-index: 1;
-  }
 
   .avatar {
     width: 64px;
