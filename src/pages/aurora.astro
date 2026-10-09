@@ -1,0 +1,11 @@
+---
+// Preview of the Aurora design with live content, kept so designs can be compared.
+import Base from '../layouts/Base.astro';
+import Aurora from '../designs/Aurora.astro';
+import { profile } from '../data/profile';
+---
+
+<Base title={profile.name} description={`${profile.name}: ${profile.headline}.`}>
+  <meta name="robots" content="noindex" slot="head" />
+  <Aurora />
+</Base>

@@ -1,16 +1,25 @@
 // All site content lives here. Edit this file to update the page.
 
+// Which design the home page uses. Both are also always available at /split and /aurora.
+export const siteDesign: 'split' | 'aurora' = 'split';
+
 export const profile = {
   name: 'Jordan Bangia',
+  initials: 'JB',
   headline: 'Staff Software Developer at Waabi',
+  tagline: 'I build data platforms and software for robots.',
   location: 'Toronto, Canada',
+  aboutLead: 'Backend and data systems, most of them running close to real hardware.',
+  // Shown as a small status badge. Set to '' to hide it.
+  status: 'Open to consulting',
   about: [
-    'I build data platforms and robotics software. Right now I work on the TLM Data Platform at Waabi, an autonomous trucking company.',
+    'Right now I work on the TLM Data Platform at Waabi, an autonomous trucking company.',
     'Before that I spent five years at Kindred (part of Ocado Group) shipping software for robotic sorting and picking in live warehouses, and two years on real-time big data pipelines at Rakuten Kobo.',
   ],
 };
 
 export const consulting = {
+  heading: 'Senior help on backend and data infrastructure.',
   pitch:
     'I take on a small number of consulting engagements alongside my full-time work, usually with teams that need senior help on backend systems, data infrastructure, or getting software running reliably on real hardware.',
   services: [
@@ -91,3 +100,12 @@ export const links = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jbangia' },
   { label: 'GitHub', href: 'https://github.com/jordanbangia' },
 ];
+
+// "2017 – 2022" style range covering all of a job's roles.
+export function jobPeriod(job: Job): string {
+  const starts = job.roles.map((r) => r.start);
+  const ends = job.roles.map((r) => r.end);
+  const start = starts.reduce((a, b) => (a < b ? a : b));
+  const end = ends.includes('Now') ? 'Now' : ends.reduce((a, b) => (a > b ? a : b));
+  return `${start} – ${end}`;
+}

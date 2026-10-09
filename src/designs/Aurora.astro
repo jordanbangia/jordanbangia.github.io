@@ -1,0 +1,335 @@
+---
+import { profile, consulting, links } from '../data/profile';
+import ContactForm from '../components/ContactForm.astro';
+import Experience from '../components/Experience.astro';
+---
+
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<main>
+  <div class="panel">
+    <header>
+      <div class="avatar">{profile.initials}</div>
+      <div>
+        <b>{profile.name}</b>
+        <span>{profile.location}</span>
+      </div>
+      {profile.status && <span class="pill">{profile.status}</span>}
+    </header>
+
+    <h1>{profile.tagline} <span>{profile.headline}.</span></h1>
+    {profile.about.map((p) => <p class="muted lede">{p}</p>)}
+
+    <section id="consulting">
+      <h2>Consulting</h2>
+      <p class="h">{consulting.heading}</p>
+      <p class="muted">{consulting.pitch}</p>
+      <div class="chips">
+        {consulting.services.map((s) => <span>{s}</span>)}
+      </div>
+      <a class="btn" href="#contact">Get in touch</a>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <Experience />
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="muted">Tell me a little about your team and what you need help with.</p>
+      <ContactForm />
+    </section>
+
+    <section>
+      <h2>Elsewhere</h2>
+      <div class="links">
+        {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+    </section>
+  </div>
+  <footer>© {new Date().getFullYear()} {profile.name}</footer>
+</main>
+
+<style is:global>
+  :root {
+    --bg: #f3f1ee;
+    --glass: rgba(255, 255, 255, 0.62);
+    --line: rgba(20, 20, 30, 0.09);
+    --text: #17181c;
+    --muted: #6c6f78;
+    --accent: #4b5fd6;
+    --b1: #c9d6ff;
+    --b2: #ffd9c7;
+    --b3: #cdeedd;
+    --field-bg: rgba(255, 255, 255, 0.7);
+    --button-bg: var(--text);
+    --button-text: var(--bg);
+    --button-radius: 999px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --bg: #0d0e14;
+      --glass: rgba(22, 24, 32, 0.6);
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #eceef3;
+      --muted: #9096a3;
+      --accent: #9aa8ff;
+      --b1: #2a3474;
+      --b2: #5a2f3a;
+      --b3: #1d4a3c;
+      --field-bg: rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --bg: #0d0e14;
+    --glass: rgba(22, 24, 32, 0.6);
+    --line: rgba(255, 255, 255, 0.08);
+    --text: #eceef3;
+    --muted: #9096a3;
+    --accent: #9aa8ff;
+    --b1: #2a3474;
+    --b2: #5a2f3a;
+    --b3: #1d4a3c;
+    --field-bg: rgba(0, 0, 0, 0.25);
+  }
+
+  html {
+    background: var(--bg);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+</style>
+
+<style>
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bg i {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.9;
+  }
+
+  .bg i:nth-child(1) {
+    width: 620px;
+    height: 620px;
+    background: var(--b1);
+    top: -160px;
+    left: -120px;
+  }
+
+  .bg i:nth-child(2) {
+    width: 520px;
+    height: 520px;
+    background: var(--b2);
+    top: 120px;
+    right: -140px;
+  }
+
+  .bg i:nth-child(3) {
+    width: 560px;
+    height: 560px;
+    background: var(--b3);
+    bottom: -220px;
+    left: 30%;
+  }
+
+  .bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--line) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 96px 24px 64px;
+  }
+
+  .panel {
+    background: var(--glass);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 44px 48px;
+    box-shadow: 0 30px 80px -40px rgba(20, 20, 40, 0.25);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--b1), var(--b2));
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+  }
+
+  header b {
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  header span {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .pill {
+    margin-left: auto;
+    font-size: 12px !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--line);
+    background: var(--glass);
+    border-radius: 999px;
+    padding: 5px 12px;
+    white-space: nowrap;
+  }
+
+  .pill::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 7px;
+    vertical-align: 1px;
+  }
+
+  h1 {
+    font-size: 34px;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  h1 span {
+    color: var(--muted);
+  }
+
+  .lede {
+    max-width: 580px;
+    margin-bottom: 10px;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  section {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  h2 {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .h {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 4px 0 8px;
+  }
+
+  .chips span {
+    font-size: 13px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--glass);
+    border: 1px solid var(--line);
+  }
+
+  .btn {
+    align-self: flex-start;
+    background: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .links a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 640px) {
+    main {
+      padding: 20px 12px 40px;
+    }
+
+    .panel {
+      padding: 28px 22px;
+    }
+
+    h1 {
+      font-size: 26px;
+    }
+
+    header {
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      margin-left: 0;
+      order: 3;
+    }
+  }
+</style>

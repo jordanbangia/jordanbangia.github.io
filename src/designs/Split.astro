@@ -1,0 +1,297 @@
+---
+import { profile, consulting, links } from '../data/profile';
+import ContactForm from '../components/ContactForm.astro';
+import Experience from '../components/Experience.astro';
+---
+
+<div class="split">
+  <aside>
+    <div>
+      <div class="avatar">{profile.initials}</div>
+      <h1>{profile.name}</h1>
+      <p class="intro">{profile.headline}. {profile.tagline}</p>
+      {profile.status && <p class="status">{profile.status} · {profile.location}</p>}
+    </div>
+    <nav>
+      {
+        links.map((l) => (
+          <a href={l.href}>
+            {l.label} <span>↗</span>
+          </a>
+        ))
+      }
+      <a href="#contact">Get in touch <span>→</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <section>
+      <h2>About</h2>
+      <p class="big">{profile.aboutLead}</p>
+      {profile.about.map((p) => <p class="muted">{p}</p>)}
+    </section>
+
+    <section id="consulting">
+      <h2>Consulting</h2>
+      <p class="big">{consulting.heading}</p>
+      <p class="muted">{consulting.pitch}</p>
+      <ul class="svc">
+        {consulting.services.map((s) => <li>{s}</li>)}
+      </ul>
+      <a class="btn" href="#contact">Get in touch</a>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <Experience />
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="muted lead">Tell me a little about your team and what you need help with.</p>
+      <ContactForm />
+    </section>
+
+    <footer>© {new Date().getFullYear()} {profile.name}</footer>
+  </main>
+</div>
+
+<style is:global>
+  :root {
+    --bg: #f7f6f3;
+    --side1: #d3e0f2;
+    --side2: #f2dcc6;
+    --line: #e3e0da;
+    --text: #191a1d;
+    --muted: #6f7178;
+    --accent: #2f6f73;
+    --field-bg: #ffffff;
+    --button-bg: var(--accent);
+    --button-text: #ffffff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --bg: #111214;
+      --side1: #1b2f3c;
+      --side2: #3a2820;
+      --line: #26282c;
+      --text: #ecedf0;
+      --muted: #8d9098;
+      --accent: #7cc4c4;
+      --field-bg: #17181b;
+      --button-text: #111214;
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --bg: #111214;
+    --side1: #1b2f3c;
+    --side2: #3a2820;
+    --line: #26282c;
+    --text: #ecedf0;
+    --muted: #8d9098;
+    --accent: #7cc4c4;
+    --field-bg: #17181b;
+    --button-text: #111214;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+  }
+</style>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: minmax(320px, 40%) 1fr;
+    min-height: 100vh;
+  }
+
+  aside {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+      radial-gradient(110% 70% at 0% 0%, var(--side1), transparent 70%),
+      radial-gradient(110% 80% at 100% 100%, var(--side2), transparent 70%),
+      var(--bg);
+    border-right: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  aside::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 28px);
+  }
+
+  aside > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 28px 0 10px;
+  }
+
+  .intro {
+    color: var(--muted);
+    max-width: 320px;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 22px;
+  }
+
+  .status::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  nav a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  nav a span {
+    color: var(--muted);
+    margin-left: 6px;
+  }
+
+  nav a:hover span {
+    color: var(--accent);
+  }
+
+  main {
+    padding: 72px 64px 40px;
+    max-width: 760px;
+  }
+
+  section {
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h2 {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .big {
+    font-family: Newsreader, Georgia, serif;
+    font-size: 26px;
+    line-height: 1.4;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .lead {
+    margin-bottom: 6px;
+  }
+
+  .svc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 8px 0 10px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .svc li {
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 14px;
+  }
+
+  .btn {
+    align-self: flex-start;
+    background: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  footer {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 820px) {
+    .split {
+      grid-template-columns: 1fr;
+    }
+
+    aside {
+      position: relative;
+      height: auto;
+      padding: 40px 20px;
+      gap: 28px;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    main {
+      padding: 40px 20px;
+    }
+
+    .svc {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

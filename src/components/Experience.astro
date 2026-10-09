@@ -1,0 +1,108 @@
+---
+import { experience, education, jobPeriod } from '../data/profile';
+---
+
+<div class="exp">
+  {
+    experience.map((job) => (
+      <div class="row">
+        <em>{jobPeriod(job)}</em>
+        <div>
+          <h3>{job.url ? <a href={job.url}>{job.company}</a> : job.company}</h3>
+          <ul class="roles">
+            {job.roles.map((r) => (
+              <li>
+                {r.title}
+                {r.note && <span> · {r.note}</span>}
+                {job.roles.length > 1 && (
+                  <span class="yrs">
+                    {' '}
+                    · {r.start}–{r.end}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          {job.summary && <p class="summary">{job.summary}</p>}
+        </div>
+      </div>
+    ))
+  }
+  {
+    education.map((e) => (
+      <div class="row">
+        <em>
+          {e.start} – {e.end}
+        </em>
+        <div>
+          <h3>{e.school}</h3>
+          <ul class="roles">
+            <li>{e.degree}</li>
+          </ul>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  em {
+    font-style: normal;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 4px;
+  }
+
+  h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h3 a:hover {
+    color: var(--accent);
+  }
+
+  .roles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .yrs {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .summary {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 560px;
+  }
+
+  @media (max-width: 560px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+  }
+</style>

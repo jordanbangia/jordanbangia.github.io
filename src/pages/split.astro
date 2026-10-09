@@ -1,0 +1,11 @@
+---
+// Preview of the Split design with live content, kept so designs can be compared.
+import Base from '../layouts/Base.astro';
+import Split from '../designs/Split.astro';
+import { profile } from '../data/profile';
+---
+
+<Base title={profile.name} description={`${profile.name}: ${profile.headline}.`}>
+  <meta name="robots" content="noindex" slot="head" />
+  <Split />
+</Base>
