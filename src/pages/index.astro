@@ -1,12 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
 import Split from '../designs/Split.astro';
-import Aurora from '../designs/Aurora.astro';
-import { profile, siteDesign } from '../data/profile';
+import { profile } from '../data/profile';
 
 const description = `${profile.name}: ${profile.headline}. Portfolio, experience and consulting.`;
 ---
 
 <Base title={profile.name} description={description}>
-  {siteDesign === 'aurora' ? <Aurora /> : <Split />}
+  <Split />
 </Base>

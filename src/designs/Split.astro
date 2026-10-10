@@ -16,11 +16,11 @@ import Experience from '../components/Experience.astro';
       {
         links.map((l) => (
           <a href={l.href}>
-            {l.label} <span>↗</span>
+            {l.label} <span aria-hidden="true">↗</span>
           </a>
         ))
       }
-      <a href="#contact">Get in touch <span>→</span></a>
+      <a href="#contact">Get in touch <span aria-hidden="true">→</span></a>
     </nav>
   </aside>
 
@@ -63,8 +63,8 @@ import Experience from '../components/Experience.astro';
     --side2: #f2dcc6;
     --line: #e3e0da;
     --text: #191a1d;
-    --muted: #6f7178;
-    --accent: #2f6f73;
+    --muted: #5d5f66;
+    --accent: #285f63;
     --field-bg: #ffffff;
     --button-bg: var(--accent);
     --button-text: #ffffff;
@@ -77,7 +77,7 @@ import Experience from '../components/Experience.astro';
       --side2: #3a2820;
       --line: #26282c;
       --text: #ecedf0;
-      --muted: #8d9098;
+      --muted: #9a9da5;
       --accent: #7cc4c4;
       --field-bg: #17181b;
       --button-text: #111214;
@@ -90,7 +90,7 @@ import Experience from '../components/Experience.astro';
     --side2: #3a2820;
     --line: #26282c;
     --text: #ecedf0;
-    --muted: #8d9098;
+    --muted: #9a9da5;
     --accent: #7cc4c4;
     --field-bg: #17181b;
     --button-text: #111214;
@@ -122,6 +122,7 @@ import Experience from '../components/Experience.astro';
       radial-gradient(110% 80% at 100% 100%, var(--side2), transparent 70%),
       var(--bg);
     border-right: 1px solid var(--line);
+    overflow-y: auto;
   }
 
 

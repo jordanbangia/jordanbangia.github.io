@@ -83,7 +83,7 @@ import { turnstileSiteKey } from '../data/profile';
     font-size: 15px;
     color: var(--text);
     background: var(--field-bg);
-    border: 1px solid var(--line);
+    border: 1px solid color-mix(in srgb, var(--muted) 70%, var(--field-bg));
     border-radius: 10px;
     padding: 10px 12px;
     width: 100%;
@@ -93,6 +93,7 @@ import { turnstileSiteKey } from '../data/profile';
   textarea:focus {
     outline: none;
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
   }
 
   textarea {
@@ -118,7 +119,7 @@ import { turnstileSiteKey } from '../data/profile';
     background: var(--button-bg);
     color: var(--button-text);
     border: 0;
-    border-radius: var(--button-radius, 10px);
+    border-radius: 10px;
     padding: 11px 20px;
     cursor: pointer;
   }

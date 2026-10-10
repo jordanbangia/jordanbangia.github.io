@@ -1,8 +1,5 @@
 // All site content lives here. Edit this file to update the page.
 
-// Which design the home page uses. Both are also always available at /split and /aurora.
-export const siteDesign: 'split' | 'aurora' = 'split';
-
 export const profile = {
   name: 'Jordan Bangia',
   initials: 'JB',
@@ -30,8 +27,7 @@ export const consulting = {
   ],
 };
 
-// Public Turnstile site key for the contact form. Replace with the real key from the
-// Cloudflare dashboard; this is Cloudflare's test key that always passes.
+// Public Turnstile site key for the contact form (widget managed in the Cloudflare dashboard).
 export const turnstileSiteKey = '0x4AAAAAAFTILNhqIWlH3u55';
 
 export type Role = {
