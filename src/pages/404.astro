@@ -3,7 +3,9 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Not found" description="Page not found">
-  <main style="max-width:640px;margin:0 auto;padding:96px 24px;font-family:system-ui">
-    <p>That page doesn't exist anymore. <a href="/">Go to the home page</a>.</p>
+  <main class="mx-auto max-w-2xl px-5 py-24 sm:px-8">
+    <p class="font-mono text-xs uppercase tracking-widest text-muted">404 / Not found</p>
+    <h1 class="mt-5 font-serif text-5xl tracking-tight">That page doesn't exist.</h1>
+    <a href="/" class="mt-8 inline-flex rounded-full bg-ink px-5 py-3 text-sm font-semibold text-canvas">Go to the home page</a>
   </main>
 </Base>

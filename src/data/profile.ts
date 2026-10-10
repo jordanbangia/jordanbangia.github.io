@@ -1,107 +1,116 @@
 // All site content lives here. Edit this file to update the page.
+// Headings are split into `lead` and an italic `emphasis` ending.
 
 export const profile = {
   name: 'Jordan Bangia',
   initials: 'JB',
-  headline: 'Staff Software Developer at Waabi',
-  tagline: 'I build data platforms and software for robots.',
   location: 'Toronto, Canada',
-  aboutLead: 'Backend and data systems, most of them running close to real hardware.',
   // Shown as a small status badge. Set to '' to hide it.
   status: 'Open to consulting',
-  about: [
-    'Right now I work on the TLM Data Platform at Waabi, an autonomous trucking company.',
-    'Before that I spent five years at Kindred (part of Ocado Group) shipping software for robotic sorting and picking in live warehouses, and two years on real-time big data pipelines at Rakuten Kobo.',
+  description: 'Jordan Bangia: Staff Software Developer at Waabi. Data platforms, backend systems and consulting.',
+  headline: { lead: 'Software for data systems and', emphasis: 'physical AI.' },
+  intro:
+    "I'm Jordan Bangia, a Staff Software Developer at Waabi. I build data platforms and backend systems that get robotics software out of the lab and into production.",
+  currentWork: {
+    title: 'Data Platform',
+    description: 'Technical Lead Manager for data infrastructure at Waabi, an autonomous trucking company.',
+    tags: ['Go', 'Data', 'Robotics'],
+  },
+};
+
+export const about = {
+  heading: { lead: 'Backend and data systems for robots,', emphasis: 'trucks and warehouses.' },
+  paragraphs: [
+    'Today I\'m the Technical Lead Manager of the Data Platform team at Waabi, which builds autonomous trucks. I joined in 2022 on Simulation Core and moved to Data Platform in 2023.',
+    'Before that I spent five years at Kindred shipping software for robotic picking and sorting in live warehouses, and two years on real-time big data pipelines at Rakuten Kobo.',
   ],
+  skills: ['Data infrastructure', 'Go', 'Backend systems', 'Robotics', 'Systems integration'],
 };
 
 export const consulting = {
-  heading: 'Senior help on backend and data infrastructure.',
+  heading: 'Senior help where software meets the real world.',
   pitch:
     'I take on a small number of consulting engagements alongside my full-time work, usually with teams that need senior help on backend systems, data infrastructure, or getting software running reliably on real hardware.',
   services: [
-    'Data platform and pipeline design',
-    'Backend services in Go',
-    'Architecture and code reviews',
-    'Robotics and on-site systems integration',
+    {
+      title: 'Data platforms',
+      description: 'Designing data platforms and pipelines that teams can rely on as they grow.',
+    },
+    {
+      title: 'Backend in Go',
+      description: 'Designing and building clear, maintainable backend services in Go.',
+    },
+    {
+      title: 'Architecture',
+      description: 'Practical architecture and code reviews that help teams make better technical decisions.',
+    },
+    {
+      title: 'Robotics systems',
+      description: 'On-site integration and software that has to keep working on robots in the field.',
+    },
   ],
+};
+
+export type Experience = {
+  date: string;
+  company: string;
+  url?: string;
+  role: string;
+  detail: string;
+  description?: string;
+};
+
+export const experience: Experience[] = [
+  {
+    date: '2022–Now',
+    company: 'Waabi',
+    url: 'https://waabi.ai',
+    role: 'Staff Software Developer',
+    detail: 'Data Platform · Technical Lead Manager',
+    description: "Leading the team that builds the data infrastructure behind Waabi's autonomous trucks.",
+  },
+  {
+    date: '2017–2022',
+    company: 'Kindred, part of Ocado Group',
+    url: 'https://www.kindred.ai',
+    role: 'Senior Software Developer',
+    detail: 'Robotic picking and sorting',
+    description:
+      'Core software for the INDUCT picking robot and the SORT robotic sorter, a Go and React service for on-site workflows, customer warehouse integrations and KPI reporting.',
+  },
+  {
+    date: '2015–2017',
+    company: 'Rakuten Kobo',
+    url: 'https://www.kobo.com',
+    role: 'Systems Engineer, Big Data',
+    detail: 'Real-time data systems',
+    description:
+      'Real-time pipelines for events from the website, mobile apps and e-readers, plus systems that opened up big data to other teams.',
+  },
+  {
+    date: '2012–2014',
+    company: 'Pivotal Labs, Xtreme Labs and AJB Software',
+    role: 'Engineering co-ops',
+    detail: 'Mobile and backend',
+    description: 'Android, BlackBerry and iOS apps, plus C# backend work.',
+  },
+  {
+    date: '2011–2015',
+    company: 'University of Toronto',
+    role: 'B.A.Sc., Engineering Science',
+    detail: 'Electrical and Computer major',
+  },
+];
+
+export const contact = {
+  kicker: 'Have a systems problem to solve?',
+  heading: { lead: "Tell me about your team and what you're", emphasis: 'building.' },
+};
+
+export const links = {
+  github: 'https://github.com/jordanbangia',
+  linkedin: 'https://www.linkedin.com/in/jbangia',
 };
 
 // Public Turnstile site key for the contact form (widget managed in the Cloudflare dashboard).
 export const turnstileSiteKey = '0x4AAAAAAFTILNhqIWlH3u55';
-
-export type Role = {
-  title: string;
-  start: string;
-  end: string;
-  note?: string;
-};
-
-export type Job = {
-  company: string;
-  url?: string;
-  location: string;
-  roles: Role[];
-  summary?: string;
-};
-
-export const experience: Job[] = [
-  {
-    company: 'Waabi',
-    url: 'https://waabi.ai',
-    location: 'Toronto',
-    roles: [
-      { title: 'Staff Software Developer', start: '2024', end: 'Now', note: 'TLM Data Platform' },
-      { title: 'Senior Software Developer', start: '2023', end: '2024', note: 'TLM Data Platform' },
-      { title: 'Senior Software Developer', start: '2022', end: '2023', note: 'Simulation Core' },
-    ],
-  },
-  {
-    company: 'Kindred, part of Ocado Group',
-    url: 'https://www.kindred.ai',
-    location: 'Toronto',
-    roles: [
-      { title: 'Senior Software Developer', start: '2020', end: '2022' },
-      { title: 'Software Developer', start: '2017', end: '2020' },
-    ],
-    summary:
-      'Core software for the INDUCT robotic picking system and performance work on the SORT robotic sorter. Built a Go and React service for on-site workflows and human interaction with the robot, plus customer warehouse integrations and KPI reporting.',
-  },
-  {
-    company: 'Rakuten Kobo',
-    url: 'https://www.kobo.com',
-    location: 'Toronto',
-    roles: [{ title: 'Systems Engineer, Big Data', start: '2015', end: '2017' }],
-    summary:
-      'Real-time pipelines for events from the website, mobile apps and e-readers, and systems that exposed big data to other teams.',
-  },
-  {
-    company: 'Pivotal Labs, Xtreme Labs, AJB Software',
-    location: 'Toronto',
-    roles: [{ title: 'Engineering co-ops', start: '2012', end: '2014' }],
-    summary: 'Android, BlackBerry and iOS apps, plus C# backend work.',
-  },
-];
-
-export const education = [
-  {
-    school: 'University of Toronto',
-    degree: 'B.A.Sc., Engineering Science (Electrical and Computer)',
-    start: '2011',
-    end: '2015',
-  },
-];
-
-export const links = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jbangia' },
-  { label: 'GitHub', href: 'https://github.com/jordanbangia' },
-];
-
-// "2017 – 2022" style range covering all of a job's roles.
-export function jobPeriod(job: Job): string {
-  const starts = job.roles.map((r) => r.start);
-  const ends = job.roles.map((r) => r.end);
-  const start = starts.reduce((a, b) => (a < b ? a : b));
-  const end = ends.includes('Now') ? 'Now' : ends.reduce((a, b) => (a > b ? a : b));
-  return `${start} – ${end}`;
-}

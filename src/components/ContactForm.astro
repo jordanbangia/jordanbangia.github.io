@@ -1,6 +1,5 @@
 ---
-// Contact form posted to the Worker at /api/contact. Styled by the surrounding design
-// through CSS custom properties: --text, --muted, --line, --field-bg and --button-*.
+// Contact form posted to the Worker at /api/contact. Sits on the accent-coloured contact section.
 import { turnstileSiteKey } from '../data/profile';
 ---
 
@@ -20,7 +19,7 @@ import { turnstileSiteKey } from '../data/profile';
     <textarea name="message" rows="5" required maxlength="5000"></textarea>
   </label>
   <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
-  <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="auto"></div>
+  <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div>
   <div class="actions">
     <button type="submit">Send message</button>
     <p class="status" role="status" aria-live="polite"></p>
@@ -60,13 +59,13 @@ import { turnstileSiteKey } from '../data/profile';
   .contact {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
   }
 
   .pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 16px;
   }
 
   label {
@@ -74,26 +73,28 @@ import { turnstileSiteKey } from '../data/profile';
     flex-direction: column;
     gap: 6px;
     font-size: 13px;
-    color: var(--muted);
+    font-weight: 500;
+    color: var(--color-on-accent);
   }
 
   input,
   textarea {
     font: inherit;
     font-size: 15px;
-    color: var(--text);
-    background: var(--field-bg);
-    border: 1px solid color-mix(in srgb, var(--muted) 70%, var(--field-bg));
-    border-radius: 10px;
-    padding: 10px 12px;
+    font-weight: 400;
+    color: var(--color-ink);
+    background: var(--color-panel);
+    border: 1px solid color-mix(in srgb, var(--color-on-accent) 60%, var(--color-accent));
+    border-radius: 16px;
+    padding: 12px 16px;
     width: 100%;
   }
 
   input:focus,
   textarea:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+    border-color: var(--color-on-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-on-accent) 25%, transparent);
   }
 
   textarea {
@@ -114,14 +115,18 @@ import { turnstileSiteKey } from '../data/profile';
 
   button {
     font: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    background: var(--button-bg);
-    color: var(--button-text);
+    font-weight: 600;
+    background: var(--color-on-accent);
+    color: #f7f6f3;
     border: 0;
-    border-radius: 10px;
-    padding: 11px 20px;
+    border-radius: 999px;
+    padding: 14px 28px;
     cursor: pointer;
+    transition: transform 200ms ease;
+  }
+
+  button:hover:not(:disabled) {
+    transform: translateY(-2px);
   }
 
   button:disabled {
@@ -132,7 +137,7 @@ import { turnstileSiteKey } from '../data/profile';
   .status {
     margin: 0;
     font-size: 14px;
-    color: var(--muted);
+    color: var(--color-on-accent);
   }
 
   @media (max-width: 560px) {

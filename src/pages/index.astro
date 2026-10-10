@@ -1,11 +1,247 @@
 ---
 import Base from '../layouts/Base.astro';
-import Split from '../designs/Split.astro';
-import { profile } from '../data/profile';
+import ContactForm from '../components/ContactForm.astro';
+import { profile, about, consulting, experience, contact, links } from '../data/profile';
 
-const description = `${profile.name}: ${profile.headline}. Portfolio, experience and consulting.`;
+// One background per service card, in order.
+const cardStyles = [
+  'bg-project-blue text-ink',
+  'bg-project-peach text-ink',
+  'bg-accent text-on-accent',
+  'bg-project-slate text-ink',
+];
+const bars = [35, 62, 48, 78, 55, 90, 70, 45, 82, 64, 95, 72, 52, 86];
+const pad = (n: number) => String(n).padStart(2, '0');
+const arrowUpRight = 'M5 19 19 5M8 5h11v11';
 ---
 
-<Base title={profile.name} description={description}>
-  <Split />
+<Base title={profile.name} description={profile.description}>
+  <div class="min-h-screen overflow-x-hidden bg-canvas text-ink">
+    <header class="mx-auto flex max-w-site items-center justify-between px-5 py-6 sm:px-8 lg:px-12">
+      <a href="#top" aria-label={`${profile.name}, back to top`} class="rounded-full">
+        <span class="flex size-10 items-center justify-center rounded-full bg-ink text-sm font-semibold text-canvas">
+          {profile.initials}
+        </span>
+      </a>
+      <nav aria-label="Main navigation" class="hidden items-center gap-8 text-sm font-medium md:flex">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#consulting">Consulting</a>
+        <a class="nav-link" href="#experience">Experience</a>
+      </nav>
+      <div class="flex items-center gap-2 sm:gap-4">
+        <button
+          type="button"
+          data-theme-toggle
+          aria-label="Dark mode"
+          title="Toggle dark mode"
+          class="flex size-9 cursor-pointer items-center justify-center rounded-full border border-line bg-transparent text-ink transition-colors hover:border-ink hover:bg-ink hover:text-canvas"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-4 dark:hidden">
+            <path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="hidden size-4 dark:block">
+            <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.7"></circle>
+            <path d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.72 5.28 17.3 6.7M6.7 17.3l-1.42 1.42M18.72 18.72 17.3 17.3M6.7 6.7 5.28 5.28" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="group flex items-center gap-2 text-sm font-semibold sm:gap-3">
+          <span class="hidden sm:inline">Get in touch</span>
+          <span class="flex size-9 items-center justify-center rounded-full border border-line transition-colors group-hover:border-ink group-hover:bg-ink group-hover:text-canvas">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-4">
+              <path d={arrowUpRight} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span class="sr-only sm:hidden">Get in touch</span>
+          </span>
+        </a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="mx-auto grid max-w-site gap-10 px-5 pb-20 pt-12 sm:px-8 md:pt-20 lg:grid-cols-[1.35fr_.65fr] lg:gap-16 lg:px-12 lg:pb-28">
+        <div>
+          {
+            profile.status && (
+              <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 font-mono text-xs font-medium uppercase tracking-wide">
+                <span class="size-2 rounded-full bg-accent ring-4 ring-accent/25" />
+                {profile.status} · {profile.location}
+              </div>
+            )
+          }
+          <h1 class="max-w-4xl text-balance font-serif text-6xl leading-[0.94] tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl">
+            {profile.headline.lead} <span class="italic text-muted">{profile.headline.emphasis}</span>
+          </h1>
+          <div class="mt-10 flex flex-col gap-8 border-t border-line pt-7 sm:flex-row sm:items-end sm:justify-between">
+            <p class="max-w-xl text-lg leading-relaxed text-muted">{profile.intro}</p>
+            <a
+              href="#consulting"
+              class="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-canvas transition-all duration-300 hover:bg-accent hover:text-on-accent sm:self-auto"
+            >
+              Work with me
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                <path d={arrowUpRight} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative mx-auto flex w-full max-w-sm items-end pt-3 lg:max-w-none lg:pt-20">
+          <div class="absolute -right-12 top-2 size-36 rounded-full border border-line" aria-hidden="true"></div>
+          <div class="relative w-full overflow-hidden rounded-[2rem] bg-ink p-6 text-canvas shadow-2xl sm:p-8">
+            <div class="mb-12 flex items-center justify-between" aria-hidden="true">
+              <div class="flex gap-1.5">
+                <span class="size-2 rounded-full bg-canvas/25"></span><span class="size-2 rounded-full bg-canvas/25"></span><span class="size-2 rounded-full bg-accent"></span>
+              </div>
+              <span class="font-mono text-[10px] tracking-widest text-canvas/65">SYSTEM / ONLINE</span>
+            </div>
+            <p class="font-mono text-xs text-accent-ink">~/current-work</p>
+            <p class="mt-4 font-serif text-4xl leading-tight">{profile.currentWork.title}</p>
+            <p class="mt-3 max-w-xs text-sm leading-relaxed text-canvas/70">{profile.currentWork.description}</p>
+            <div class="mt-12 grid grid-cols-3 gap-2">
+              {
+                profile.currentWork.tags.map((tag) => (
+                  <span class="rounded-lg border border-canvas/15 py-3 text-center font-mono text-[10px] uppercase tracking-wider text-canvas/70">
+                    {tag}
+                  </span>
+                ))
+              }
+            </div>
+            <div class="mt-8 flex h-20 items-end gap-1.5" aria-hidden="true">
+              {bars.map((height, i) => <span class={`flex-1 rounded-t-sm ${i > 9 ? 'bg-accent' : 'bg-canvas/20'}`} style={`height: ${height}%`} />)}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="border-y border-line bg-panel">
+        <div class="mx-auto grid max-w-site gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[.7fr_1.3fr] lg:px-12 lg:py-28">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-muted">About / Focus</p>
+            <div class="mt-8 hidden h-px w-32 bg-line lg:block"></div>
+          </div>
+          <div>
+            <h2 class="max-w-4xl font-serif text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              {about.heading.lead} <span class="italic text-muted">{about.heading.emphasis}</span>
+            </h2>
+            <div class="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
+              {about.paragraphs.map((p) => <p class="leading-relaxed text-muted">{p}</p>)}
+            </div>
+            <ul class="mt-12 flex flex-wrap gap-2">
+              {about.skills.map((skill) => <li class="rounded-full border border-line px-4 py-2 text-sm font-medium">{skill}</li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="consulting" class="mx-auto max-w-site px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div class="mb-12 flex items-end justify-between border-b border-line pb-6">
+          <div>
+            <p class="mb-3 font-mono text-xs uppercase tracking-widest text-muted">Consulting / Services</p>
+            <h2 class="max-w-3xl font-serif text-5xl tracking-tight sm:text-6xl">{consulting.heading}</h2>
+          </div>
+          <span class="hidden font-serif text-5xl italic text-line sm:block" aria-hidden="true">{pad(consulting.services.length)}</span>
+        </div>
+        <p class="mb-10 max-w-2xl text-lg leading-relaxed text-muted">{consulting.pitch}</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          {
+            consulting.services.map((service, i) => (
+              <article class={`min-h-72 rounded-[2rem] p-7 sm:p-9 ${cardStyles[i % cardStyles.length]}`}>
+                <p class="font-mono text-xs font-semibold tracking-widest">{pad(i + 1)} / SERVICE</p>
+                <div class="mt-20">
+                  <h3 class="font-serif text-4xl tracking-tight sm:text-5xl">{service.title}</h3>
+                  <p class="mt-4 max-w-md leading-relaxed opacity-75">{service.description}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section id="experience" class="bg-ink text-canvas">
+        <div class="mx-auto max-w-site px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+          <div class="grid gap-10 lg:grid-cols-[.7fr_1.3fr]">
+            <div>
+              <p class="font-mono text-xs uppercase tracking-widest text-canvas/65">Experience / Timeline</p>
+              <h2 class="mt-5 font-serif text-5xl tracking-tight">The path so far.</h2>
+            </div>
+            <div>
+              {
+                experience.map((item) => (
+                  <article class="group grid gap-4 border-t border-canvas/15 py-8 sm:grid-cols-[8rem_1fr_auto] sm:gap-6">
+                    <p class="font-mono text-xs uppercase text-canvas/65">{item.date}</p>
+                    <div>
+                      <h3 class="text-xl font-semibold sm:text-2xl">{item.role}</h3>
+                      <p class="mt-1 text-sm text-accent-ink">
+                        {item.company} · {item.detail}
+                      </p>
+                      {item.description && <p class="mt-4 max-w-xl leading-relaxed text-canvas/70">{item.description}</p>}
+                    </div>
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Visit ${item.company}`}
+                        class="hidden text-canvas/50 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent-ink sm:block"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-5">
+                          <path d={arrowUpRight} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </a>
+                    )}
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="bg-accent text-on-accent">
+        <div class="mx-auto max-w-site px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+          <div class="text-center">
+            <p class="mb-6 font-mono text-xs font-semibold uppercase tracking-widest">{contact.kicker}</p>
+            <h2 class="mx-auto max-w-4xl font-serif text-5xl leading-none tracking-tight sm:text-7xl lg:text-8xl">
+              {contact.heading.lead} <span class="italic">{contact.heading.emphasis}</span>
+            </h2>
+          </div>
+          <div class="mx-auto mt-14 max-w-2xl">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-ink text-canvas">
+      <div class="mx-auto flex max-w-site flex-col gap-6 px-5 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
+        <p class="font-mono text-xs uppercase text-canvas/65">© {new Date().getFullYear()} {profile.name} · {profile.location}</p>
+        <div class="flex items-center gap-5">
+          <a href={links.github} target="_blank" rel="noreferrer" aria-label={`${profile.name} on GitHub`} class="text-canvas/70 transition-colors hover:text-accent-ink">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-5">
+              <path d="M12 2C6.48 2 2 6.59 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.51.47-3.16-.63-3.36-1.21-.11-.3-.6-1.21-1.03-1.45-.35-.2-.85-.7-.01-.71.79-.01 1.35.74 1.54 1.05.9 1.55 2.34 1.11 2.91.84.09-.67.35-1.11.64-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.04 1.03-2.75-.1-.26-.45-1.31.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.87c.85 0 1.7.12 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.75 0 3.93-2.34 4.8-4.56 5.06.36.32.67.93.67 1.89 0 1.37-.01 2.47-.01 2.82 0 .27.18.6.69.49A10.25 10.25 0 0 0 22 12.25C22 6.59 17.52 2 12 2Z"></path>
+            </svg>
+          </a>
+          <a href={links.linkedin} target="_blank" rel="noreferrer" aria-label={`${profile.name} on LinkedIn`} class="text-canvas/70 transition-colors hover:text-accent-ink">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-5">
+              <path d="M6.5 8.2H3.2V19H6.5V8.2ZM4.85 3A1.93 1.93 0 1 0 4.85 6.86 1.93 1.93 0 0 0 4.85 3ZM19.9 12.81c0-3.25-1.73-4.76-4.04-4.76-1.86 0-2.69 1.02-3.15 1.74V8.2H9.4V19h3.31v-5.35c0-1.41.27-2.78 2.02-2.78 1.73 0 1.75 1.62 1.75 2.87V19h3.31l.11-6.19Z"></path>
+            </svg>
+          </a>
+          <a href="#top" class="ml-3 text-xs font-semibold uppercase tracking-wider text-canvas/70 transition-colors hover:text-accent-ink">Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </Base>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const sync = () => toggle?.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+  sync();
+  toggle?.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    try {
+      localStorage.setItem('theme', root.dataset.theme);
+    } catch {}
+    sync();
+  });
+</script>
