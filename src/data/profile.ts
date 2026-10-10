@@ -32,7 +32,7 @@ export const consulting = {
 
 // Public Turnstile site key for the contact form. Replace with the real key from the
 // Cloudflare dashboard; this is Cloudflare's test key that always passes.
-export const turnstileSiteKey = '1x00000000000000000000AA';
+export const turnstileSiteKey = '0x4AAAAAAFTILNhqIWlH3u55';
 
 export type Role = {
   title: string;

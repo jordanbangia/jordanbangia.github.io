@@ -12,6 +12,9 @@ const MAX_MESSAGE = 5000;
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.hostname === 'www.jordanbangia.com') {
+      return Response.redirect(`https://jordanbangia.com${url.pathname}${url.search}`, 301);
+    }
     if (url.pathname === '/api/contact') {
       if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
       return handleContact(request, env);
