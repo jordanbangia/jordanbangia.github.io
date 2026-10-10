@@ -10,7 +10,7 @@ npm run dev      # local dev server at http://localhost:4321
 npm run build    # static output in dist/
 ```
 
-Deploys run through Cloudflare Workers Builds: pushes to `main` go to production, other branches get preview URLs. Build command `npm run build`, deploy command `npx wrangler deploy`.
+Deploys run through Cloudflare Workers Builds: pushes to `master` go to production, other branches get preview URLs. Build command `npm run build`, deploy command `npx wrangler deploy`.
 
 ## Contact form
 
