@@ -52,6 +52,7 @@ body {
   min-width: 20rem;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: var(--color-canvas);
   color: var(--color-ink);
   transition: background-color 250ms ease, color 250ms ease;
@@ -60,6 +61,17 @@ body {
 ::selection {
   background: var(--color-accent);
   color: var(--color-on-accent);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 :focus-visible {
