@@ -30,19 +30,20 @@ export const about = {
 export const consulting = {
   heading: 'Senior help where software meets the real world.',
   pitch:
-    'I take on a small number of consulting engagements alongside my full-time work, usually with teams that need senior help on backend systems, data infrastructure, or getting software running reliably on real hardware.',
+    'I take on a small number of consulting engagements alongside my full-time work, usually with teams that need senior help on data infrastructure, putting AI to work, building for the web, or getting software running reliably on real hardware.',
   services: [
     {
       title: 'Data platforms',
       description: 'Designing data platforms and pipelines that teams can rely on as they grow.',
     },
     {
-      title: 'Backend in Go',
-      description: 'Designing and building clear, maintainable backend services in Go.',
+      title: 'AI enablement',
+      description:
+        'Giving your business AI superpowers: picking the right tools, connecting them to your data and workflows, and getting them into everyday use.',
     },
     {
-      title: 'Architecture',
-      description: 'Practical architecture and code reviews that help teams make better technical decisions.',
+      title: 'Full-stack web',
+      description: 'Web apps built end to end, from the database and backend to a fast, polished front end.',
     },
     {
       title: 'Robotics systems',
@@ -58,6 +59,8 @@ export type Experience = {
   role: string;
   detail: string;
   description?: string;
+  // Logo in public/logos, shown single-colour. ratio is width / height.
+  logo?: { src: string; ratio: number };
 };
 
 export const experience: Experience[] = [
@@ -65,6 +68,7 @@ export const experience: Experience[] = [
     date: '2022–Now',
     company: 'Waabi',
     url: 'https://waabi.ai',
+    logo: { src: '/logos/waabi.svg', ratio: 3.26 },
     role: 'Staff Software Developer',
     detail: 'Data Platform · Technical Lead Manager',
     description: "Leading the team that builds the data infrastructure behind Waabi's autonomous trucks.",
@@ -72,7 +76,7 @@ export const experience: Experience[] = [
   {
     date: '2017–2022',
     company: 'Kindred, part of Ocado Group',
-    url: 'https://www.kindred.ai',
+    logo: { src: '/logos/kindred.png', ratio: 3.72 },
     role: 'Senior Software Developer',
     detail: 'Robotic picking and sorting',
     description:
@@ -82,6 +86,7 @@ export const experience: Experience[] = [
     date: '2015–2017',
     company: 'Rakuten Kobo',
     url: 'https://www.kobo.com',
+    logo: { src: '/logos/kobo.svg', ratio: 5.22 },
     role: 'Systems Engineer, Big Data',
     detail: 'Real-time data systems',
     description:
@@ -97,6 +102,8 @@ export const experience: Experience[] = [
   {
     date: '2011–2015',
     company: 'University of Toronto',
+    url: 'https://www.utoronto.ca',
+    logo: { src: '/logos/uoft.png', ratio: 2.7 },
     role: 'B.A.Sc., Engineering Science',
     detail: 'Electrical and Computer major',
   },

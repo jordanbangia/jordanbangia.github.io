@@ -169,6 +169,13 @@ const arrowUpRight = 'M5 19 19 5M8 5h11v11';
                   <article class="group grid gap-4 border-t border-canvas/15 py-8 sm:grid-cols-[8rem_1fr_auto] sm:gap-6">
                     <p class="font-mono text-xs uppercase text-canvas/65">{item.date}</p>
                     <div>
+                      {item.logo && (
+                        <span
+                          aria-hidden="true"
+                          class="mb-4 block h-7 bg-current text-canvas opacity-80 transition-opacity group-hover:opacity-100"
+                          style={`width: ${1.75 * item.logo.ratio}rem; mask: url(${item.logo.src}) left center / contain no-repeat; -webkit-mask: url(${item.logo.src}) left center / contain no-repeat;`}
+                        />
+                      )}
                       <h3 class="text-xl font-semibold sm:text-2xl">{item.role}</h3>
                       <p class="mt-1 text-sm text-accent-ink">
                         {item.company} · {item.detail}
