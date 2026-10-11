@@ -13,9 +13,26 @@ const cardStyles = [
 const bars = [35, 62, 48, 78, 55, 90, 70, 45, 82, 64, 95, 72, 52, 86];
 const pad = (n: number) => String(n).padStart(2, '0');
 const arrowUpRight = 'M5 19 19 5M8 5h11v11';
+
+// Structured data so search engines can show who this page is about.
+const [current] = experience;
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: Astro.site,
+  description: profile.description,
+  jobTitle: current.role,
+  worksFor: { '@type': 'Organization', name: current.company, url: current.url },
+  address: profile.location,
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'University of Toronto' },
+  sameAs: [links.linkedin, links.github],
+};
 ---
 
 <Base title={profile.name} description={profile.description}>
+  <link slot="head" rel="canonical" href={Astro.site} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(personLd)} />
   <div class="min-h-screen overflow-x-hidden bg-canvas text-ink">
     <header class="mx-auto flex max-w-site items-center justify-between px-5 py-6 sm:px-8 lg:px-12">
       <a href="#top" aria-label={`${profile.name}, back to top`} class="rounded-full">

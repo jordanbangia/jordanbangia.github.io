@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Not found" description="Page not found">
+  <meta slot="head" name="robots" content="noindex" />
   <main class="mx-auto max-w-2xl px-5 py-24 sm:px-8">
     <p class="font-mono text-xs uppercase tracking-widest text-muted">404 / Not found</p>
     <h1 class="mt-5 font-serif text-5xl tracking-tight">That page doesn't exist.</h1>
