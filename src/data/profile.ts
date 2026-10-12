@@ -6,7 +6,7 @@ export const profile = {
   initials: 'JB',
   location: 'Toronto, Canada',
   // Shown as a small status badge. Set to '' to hide it.
-  status: 'Open to consulting',
+  status: '',
   description: 'Jordan Bangia: Staff Software Developer at Waabi. Data platforms, backend systems and consulting.',
   headline: { lead: 'Software for data systems and', emphasis: 'physical AI.' },
   intro:
@@ -28,9 +28,9 @@ export const about = {
 };
 
 export const consulting = {
-  heading: 'Senior help where software meets the real world.',
+  heading: 'From prototype to production, on your timeline.',
   pitch:
-    'I take on a small number of consulting engagements alongside my full-time work, usually with teams that need senior help on data infrastructure, putting AI to work, building for the web, or getting software running reliably on real hardware.',
+    "I've built data infrastructure for autonomous trucks, software for warehouse robots, and real-time pipelines at Kobo. Alongside my full-time role I take on a few engagements a year, helping startups and small businesses build data systems, bring AI into everyday work, and launch web products that hold up once real users arrive.",
   services: [
     {
       title: 'Data platforms',
