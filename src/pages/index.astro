@@ -30,7 +30,7 @@ const personLd = {
 };
 ---
 
-<Base title={profile.name} description={profile.description}>
+<Base title={profile.title} description={profile.description}>
   <link slot="head" rel="canonical" href={Astro.site} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(personLd)} />
   <div class="min-h-screen overflow-x-hidden bg-canvas text-ink">
@@ -142,9 +142,6 @@ const personLd = {
             <div class="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
               {about.paragraphs.map((p) => <p class="leading-relaxed text-muted">{p}</p>)}
             </div>
-            <ul class="mt-12 flex flex-wrap gap-2">
-              {about.skills.map((skill) => <li class="rounded-full border border-line px-4 py-2 text-sm font-medium">{skill}</li>)}
-            </ul>
           </div>
         </div>
       </section>

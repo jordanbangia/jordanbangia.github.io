@@ -7,7 +7,9 @@ export const profile = {
   location: 'Toronto, Canada',
   // Shown as a small status badge. Set to '' to hide it.
   status: '',
-  description: 'Jordan Bangia: Staff Software Developer at Waabi. Data platforms, backend systems and consulting.',
+  title: 'Jordan Bangia: Software for data systems and physical AI',
+  description:
+    'Jordan Bangia, Staff Software Developer at Waabi in Toronto. Consulting on data platforms, AI enablement, full-stack web and robotics systems.',
   headline: { lead: 'Software for data systems and', emphasis: 'physical AI.' },
   intro:
     "I'm Jordan Bangia. I build the data platforms and backend systems that get robotics software out of the lab and into production.",
@@ -24,7 +26,6 @@ export const about = {
     'The common thread in my work is data coming off real devices: e-readers, warehouse robots, and now autonomous trucks. That data is messy and high-volume, and it has to be trustworthy before anyone can build on it.',
     "I do my best work close to the hardware and close to the people using what I build, whether that's an operator on a warehouse floor or an engineer training the next model.",
   ],
-  skills: ['Data infrastructure', 'Go', 'Backend systems', 'Robotics', 'Systems integration'],
 };
 
 export const consulting = {
