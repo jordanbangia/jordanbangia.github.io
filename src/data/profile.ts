@@ -10,7 +10,7 @@ export const profile = {
   description: 'Jordan Bangia: Staff Software Developer at Waabi. Data platforms, backend systems and consulting.',
   headline: { lead: 'Software for data systems and', emphasis: 'physical AI.' },
   intro:
-    "I'm Jordan Bangia, a Staff Software Developer at Waabi. I build data platforms and backend systems that get robotics software out of the lab and into production.",
+    "I'm Jordan Bangia. I build the data platforms and backend systems that get robotics software out of the lab and into production.",
   currentWork: {
     title: 'Data Platform',
     description: 'Technical Lead Manager for data infrastructure at Waabi, an autonomous trucking company.',
@@ -19,10 +19,10 @@ export const profile = {
 };
 
 export const about = {
-  heading: { lead: 'Backend and data systems for robots,', emphasis: 'trucks and warehouses.' },
+  heading: { lead: 'Ten years of data from', emphasis: 'real machines.' },
   paragraphs: [
-    'Today I\'m the Technical Lead Manager of the Data Platform team at Waabi, which builds autonomous trucks. I joined in 2022 on Simulation Core and moved to Data Platform in 2023.',
-    'Before that I spent five years at Kindred shipping software for robotic picking and sorting in live warehouses, and two years on real-time big data pipelines at Rakuten Kobo.',
+    'The common thread in my work is data coming off real devices: e-readers, warehouse robots, and now autonomous trucks. That data is messy and high-volume, and it has to be trustworthy before anyone can build on it.',
+    "I do my best work close to the hardware and close to the people using what I build, whether that's an operator on a warehouse floor or an engineer training the next model.",
   ],
   skills: ['Data infrastructure', 'Go', 'Backend systems', 'Robotics', 'Systems integration'],
 };
@@ -30,11 +30,11 @@ export const about = {
 export const consulting = {
   heading: 'From prototype to production, on your timeline.',
   pitch:
-    "I've built data infrastructure for autonomous trucks, software for warehouse robots, and real-time pipelines at Kobo. Alongside my full-time role I take on a few engagements a year, helping startups and small businesses build data systems, bring AI into everyday work, and launch web products that hold up once real users arrive.",
+    'Alongside my full-time role I take on a few engagements a year with startups and small businesses, helping them bring AI into everyday work and launch web products that hold up once real users arrive. I work hands-on with your team, writing the code rather than handing over a report.',
   services: [
     {
       title: 'Data platforms',
-      description: 'Designing data platforms and pipelines that teams can rely on as they grow.',
+      description: 'Pipelines and storage your team can trust as data volume and headcount grow.',
     },
     {
       title: 'AI enablement',
@@ -71,7 +71,7 @@ export const experience: Experience[] = [
     logo: { src: '/logos/waabi.svg', ratio: 3.26 },
     role: 'Staff Software Developer',
     detail: 'Data Platform · Technical Lead Manager',
-    description: "Leading the team that builds the data infrastructure behind Waabi's autonomous trucks.",
+    description: 'Joined on Simulation Core in 2022, then moved to lead the Data Platform team in 2023.',
   },
   {
     date: '2017–2022',
