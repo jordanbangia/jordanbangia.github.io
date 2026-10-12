@@ -21,7 +21,7 @@ export const profile = {
 };
 
 export const about = {
-  heading: { lead: 'Ten years of data from', emphasis: 'real machines.' },
+  heading: { lead: 'Over a decade of data from', emphasis: 'real machines.' },
   paragraphs: [
     'The common thread in my work is data coming off real devices: e-readers, warehouse robots, and now autonomous trucks. That data is messy and high-volume, and it has to be trustworthy before anyone can build on it.',
     "I do my best work close to the hardware and close to the people using what I build, whether that's an operator on a warehouse floor or an engineer training the next model.",
